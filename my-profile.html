@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>My Profile</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20250512215203">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+</head>
+
+<body class="load">
+	<div class="wrapper">
+		<header data-scroll="40" data-scroll-show class="header">
+			<div class="header__container">
+				<div data-da=".menu,767.98,0" class="header__top">
+					<div class="header__left">
+						<div class="header__contacts contacts-header">
+							<a href="" class="contacts-header__link _icon-telegram"></a>
+							<a href="" class="contacts-header__link _icon-whatsapp"></a>
+						</div>
+						<div data-dropdown-hover class="header__language language">
+							<button data-dropdown-button class="language__button" data-value="en">
+								<div class="language__icon _icon-planet"></div>
+								<div class="language__icon _icon-arrow">en</div>
+							</button>
+							<ul data-dropdown-list class="language__list">
+								<li data-dropdown-item class="language__item" data-value="en">
+									<a href="">en</a>
+								</li>
+								<li data-dropdown-item class="language__item" data-value="de">
+									<a href="">de</a>
+								</li>
+								<li data-dropdown-item class="language__item" data-value="ja">
+									<a href="">ja</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="header__right">
+						<a href="" data-popup="#popup-login" class="header__action btn btn-white"><span>Login</span></a>
+						<a href="" data-popup="#popup-signup" class="header__action btn"><span>Registration</span></a>
+					</div>
+				</div>
+				<div class="header__main">
+					<a href="" class="header__logo logo">Best Matchmaking</a>
+					<nav class="header__menu menu">
+						<ul class="menu__list">
+							<li class="menu__item">
+								<a href="" class="menu__link active">Home</a>
+							</li>
+							<li class="menu__item">
+								<a href="" class="menu__link">how it works</a>
+							</li>
+							<li class="menu__item">
+								<a href="" class="menu__link">Membership Plans</a>
+							</li>
+							<li class="menu__item">
+								<a href="" class="menu__link">For Afiliates</a>
+							</li>
+							<li class="menu__item">
+								<a href="" class="menu__link">ladies search</a>
+							</li>
+						</ul>
+					</nav>
+					<div class="header__inner">
+						<div class="header__search search-header">
+							<button type="submit" class="search-header__icon _icon-search"></button>
+							<form action="#" class="search-header__form">
+								<button type="submit" class="search-header__button _icon-search"></button>
+								<input id="input" type="text" name="form[]" data-error="Ошибка" placeholder="Пошук" class="search-header__input">
+							</form>
+						</div>
+						<button type="button" class="header__icon--wrap icon-menu">
+							<div class="header__icon"><span></span></div>
+						</button>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main>
+			<section class="account">
+				<div class="account__container">
+					<div class="account__wrapper">
+						<aside class="account__side side">
+							<ul class="side__list">
+								<li class="side__item">
+									<a href="" class="side__link">
+										<div class="side__inner _icon-camera">Add/ Edit Your Photos</div>
+									</a>
+								</li>
+								<li data-spollers class="side__spollers">
+									<details class="side__details">
+										<summary class="side__link active">
+											<div class="side__inner _icon-usre">My Profile</div>
+											<div class="side__arrow _icon-arrow"></div>
+										</summary>
+										<div class="side__body">
+											<a href="" class="side__link--mod">Verify profile</a>
+										</div>
+									</details>
+								</li>
+								<li class="side__item">
+									<a href="" class="side__link">
+										<div class="side__inner _icon-star">Favorites</div>
+										<div class="side__box">10</div>
+									</a>
+								</li>
+								<li class="side__item">
+									<a href="" class="side__link">
+										<div class="side__inner _icon-doc">Membership plans</div>
+									</a>
+								</li>
+								<li class="side__item">
+									<a href="" class="side__link">
+										<div class="side__inner _icon-search-list">Women gallery</div>
+									</a>
+								</li>
+								<li class="side__item">
+									<a href="" class="side__link">
+										<div class="side__inner _icon-settings">Chage Your Password</div>
+									</a>
+								</li>
+							</ul>
+							<div class="side__dropdown dropdown">
+								<button class="side__link active dropdown__button">
+									<div class="side__inner _icon-usre">My Profile</div>
+									<div class="side__arrow _icon-arrow"></div>
+								</button>
+								<ul class="dropdown__list">
+									<!-- TODO  прячем тот li если он активный -->
+									<li class="side__item dropdown__list-item">
+										<a href="" class="side__link">
+											<div class="side__inner _icon-camera">Add/ Edit Your Photos</div>
+										</a>
+									</li>
+									<!-- <li data-spollers="1179.98,min" class="side__spollers dropdown__list-item">
+										<details class="side__details">
+											<summary class="side__link">
+												<div class="side__inner _icon-usre">My Profile</div>
+												<div class="side__arrow _icon-arrow"></div>
+											</summary>
+											<div class="side__body">
+												<a href="" class="side__link--mod">Verify profile</a>
+											</div>
+										</details>
+									</li> -->
+									<li class="side__item dropdown__list-item">
+										<a href="" class="side__link">
+											<div class="side__inner _icon-star">Favorites</div>
+											<div class="side__box">10</div>
+										</a>
+									</li>
+									<li class="side__item dropdown__list-item">
+										<a href="" class="side__link">
+											<div class="side__inner _icon-doc">Membership plans</div>
+										</a>
+									</li>
+									<li class="side__item dropdown__list-item">
+										<a href="" class="side__link">
+											<div class="side__inner _icon-search-list">Women gallery</div>
+										</a>
+									</li>
+									<li class="side__item dropdown__list-item">
+										<a href="" class="side__link">
+											<div class="side__inner _icon-settings">Chage Your Password</div>
+										</a>
+									</li>
+								</ul>
+								<input type="text" name="select-category" value="" class="dropdown__input-hidden">
+							</div>
+						</aside>
+						<div class="account__about about-account">
+							<div class="about-account__wrap">
+								<div class="about-account__box">
+									<div class="about-account__row">
+										<div class="about-account__image lazy_image">
+											<img data-src="img/account/01.webp" alt="">
+										</div>
+									</div>
+									<div class="about-account__content">
+										<div data-da=".about-account__row,991.98,1" class="about-account__inner">
+											<div class="about-account__title">Pavel Antonov</div>
+										</div>
+										<div class="about-account__list">
+											<div data-da=".about-account__inner,991.98,1" class="about-account__item">
+												<div class="about-account__label">Profile Id:</div>
+												<div class="about-account__descr">E2149065455</div>
+											</div>
+											<div class="about-account__item">
+												<div class="about-account__label">Gender:</div>
+												<div class="about-account__descr">Male</div>
+											</div>
+											<div class="about-account__item">
+												<div class="about-account__label">Your Age:</div>
+												<div class="about-account__descr">24</div>
+											</div>
+											<div class="about-account__item">
+												<div class="about-account__label">Birth Date:</div>
+												<div class="about-account__descr">30.05.1990</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<button type="button" class="about-account__edit photo-account__edit _icon-edit"></button>
+							</div>
+							<div class="about-account__profile-about profile-about">
+								<div data-spollers="991.98,max" class="profile-about__spollers">
+									<details class="profile-about__box">
+										<summary class="profile-about__title _icon-arrow">About Me</summary>
+										<div class="profile-about__list mod4">
+											<div class="profile-about__column">
+												<div class="profile-about__item">
+													<div class="profile-about__label">Religion</div>
+													<div class="profile-about__value">-</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Education</div>
+													<div class="profile-about__value">University graduated</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Eyes</div>
+													<div class="profile-about__value">Black</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Other languages spoken</div>
+													<div class="profile-about__value">Japanese</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Age group of a partner</div>
+													<div class="profile-about__value">18–32</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Marital status</div>
+													<div class="profile-about__value">Divorce</div>
+												</div>
+											</div>
+											<div class="profile-about__column">
+												<div class="profile-about__item">
+													<div class="profile-about__label">Occupation</div>
+													<div class="profile-about__value">I manage my own company</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Weight</div>
+													<div class="profile-about__value">154 cm / 5'0"</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Hair</div>
+													<div class="profile-about__value">Black</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Do you smoke?</div>
+													<div class="profile-about__value">No</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Do you enjoy cooking?</div>
+													<div class="profile-about__value">Yes</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Kids</div>
+													<div class="profile-about__value">Two daughters (We are separated.)</div>
+												</div>
+											</div>
+											<div class="profile-about__column">
+												<div class="profile-about__item">
+													<div class="profile-about__label">Annual Income*</div>
+													<div class="profile-about__value">-</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Height</div>
+													<div class="profile-about__value">70 kg 154 lbs</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">English level</div>
+													<div class="profile-about__value">Good</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Do you drink alcohol?</div>
+													<div class="profile-about__value">No</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Are you a morning or an evening person?</div>
+													<div class="profile-about__value">Morning</div>
+												</div>
+											</div>
+										</div>
+									</details>
+									<details class="profile-about__box">
+										<summary class="profile-about__title _icon-arrow">More about myself</summary>
+										<div class="profile-about__list mod4">
+											<div class="profile-about__column mod">
+												<div class="profile-about__item">
+													<div class="profile-about__label">What do you like to do in your leisure time?</div>
+													<div class="profile-about__value">
+														On holidays, I sometimes watch movies and spend some time to relax, but I also love to go on trips and eat delicious foods. I'm also interested in interior, so it's fun for me to relax in a nice café with a nice atmosphere.
+													</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Which sports do you play? Do you want your match to be sportive too?</div>
+													<div class="profile-about__value">Football</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">What type of music do you like to listen to?</div>
+													<div class="profile-about__value">R&B,House,Techno,Hip-Hop,Pop</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">What type of music do you like to listen to?</div>
+													<div class="profile-about__value">R&B,House,Techno,Hip-Hop,Pop</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">In addition to love and affection, what are your main reasons for wanting a relationship?</div>
+													<div class="profile-about__value">I want to live happily with my family.</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Which statement should be most applicable to your ideal partner?</div>
+													<div class="profile-about__value">-</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Do you think that it’s important to always make an effort to be faithful?</div>
+													<div class="profile-about__value">Of course I think so.</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Will you accept a partner who already has kids?</div>
+													<div class="profile-aboutf__value">Yes</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Which terms describe qualities you want your partner to like about you?</div>
+													<div class="profile-about__value">-</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Which factors are most likely to interest you in a partner?</div>
+													<div class="profile-about__value">I think people's personalities matter more than their appearance.</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">Why do you think that you haven’t found a suitable partner yet?</div>
+													<div class="profile-about__value">I wasn't looking for it until now.</div>
+												</div>
+												<div class="profile-about__item">
+													<div class="profile-about__label">What do you regard as the most important thing in a relationship?</div>
+													<div class="profile-about__value">Thoughtfulness is very important.</div>
+												</div>
+											</div>
+										</div>
+									</details>
+									<details class="profile-about__box">
+										<summary class="profile-about__title _icon-arrow">Interests</summary>
+										<div class="profile-about__list mod">
+											<div class="profile-about__tag">Biking</div>
+											<div class="profile-about__tag">Books</div>
+											<div class="profile-about__tag">Camping</div>
+											<div class="profile-about__tag">Books</div>
+											<div class="profile-about__tag">Camping</div>
+											<div class="profile-about__tag">Meditation & Yoga</div>
+											<div class="profile-about__tag">Camping</div>
+											<div class="profile-about__tag">Meditation & Yoga</div>
+											<div class="profile-about__tag">Biking</div>
+											<div class="profile-about__tag">Books</div>
+											<div class="profile-about__tag">Camping</div>
+											<div class="profile-about__tag">Books</div>
+											<div class="profile-about__tag">Camping</div>
+											<div class="profile-about__tag">Books</div>
+											<div class="profile-about__tag">Camping</div>
+											<div class="profile-about__tag">Meditation & Yoga</div>
+										</div>
+									</details>
+									<details class="profile-about__box">
+										<summary class="profile-about__title _icon-arrow">Personal Message</summary>
+										<div class="profile-about__list mod4">
+											<div class="profile-about__text">
+												<p>Nice to meet you. I am KENICHIRO. <br>
+													I live in Tokyo. I live in a high-rise apartment in the middle of Tokyo. I like the convenience and easy living in Tokyo. I have been involved in soccer-related work, and have been expanding overseas for the past two years, and often work overseas. I have a strong spirit of challenge and also very patient. I’m often relied on because I will spare no effort to help anyone. I say it myself but I’m tuff. People often say that I am kind and never leave people in need. I hope we can get along with each other. My hobbies include work, but I like watching sports (I also watch soccer, of course). On holidays, I sometimes watch movies and spend some time to relax, but I also love to go on trips and eat delicious foods. I'm also interested in interior, so it's fun for me to relax in a nice café with a nice atmosphere. If I like a girl, I will protect her with all my might. I'll be so glad if you have a little interest. Thank you.</p>
+											</div>
+										</div>
+									</details>
+									<details class="profile-about__box">
+										<summary class="profile-about__title _icon-arrow">I am looking for a woman</summary>
+										<div class="profile-about__list mod4">
+											<div class="profile-about__text">
+												<p>My favorite type is someone with a nice smile and caring. I think that people who value their families are also wonderful. <br>
+													If there is a wonderful encounter, I want to meet early to deepen our trust. And I think that there might be some visa issues,
+													so I want to do a lot of dating in countries where each other does not need a visa. And I hope you come to Tokyo and get used to it. Let me guide you in various ways.</p>
+											</div>
+										</div>
+									</details>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="viewed-profiles">
+				<div class="viewed-profiles__container">
+					<div class="viewed-profiles__main">
+						<div class="viewed-profiles__title h2">Viewed profiles</div>
+						<div class="viewed-profiles__slider swiper">
+							<div class="viewed-profiles__wrapper swiper-wrapper">
+								<div class="viewed-profiles__slide swiper-slide">
+									<div class="viewed-profiles__inner">
+										<a href="" class="viewed-profiles__link"></a>
+										<div class="viewed-profiles__top">
+											<div class="viewed-profiles__box text-xs">
+												<div class="viewed-profiles__text--wrap">
+													<div class="viewed-profiles__text">ID: 34506</div>
+													<div class="viewed-profiles__blur"></div>
+												</div>
+												<div class="viewed-profiles__text--wrap">
+													<div class="viewed-profiles__text _icon-done-circle">Verified</div>
+													<div class="viewed-profiles__blur"></div>
+												</div>
+											</div>
+											<div class="viewed-profiles__actions">
+												<button type="submit" class="viewed-profiles__button _icon-favorite"></button>
+												<button type="submit" class="viewed-profiles__button _icon-png-gift"></button>
+												<button type="submit" class="viewed-profiles__button _icon-png-hearts"></button>
+											</div>
+										</div>
+										<div class="viewed-profiles__bottom">
+											<div class="viewed-profiles__content">
+												<div class="viewed-profiles__name">Karina, 32</div>
+												<div class="viewed-profiles__descr text-xs">New Jersey, USA</div>
+											</div>
+											<div class="viewed-profiles__bg"></div>
+										</div>
+									</div>
+									<div class="viewed-profiles__image">
+										<img src="img/gallery/01.webp" loading="lazy" />
+										<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+									</div>
+								</div>
+								<div class="viewed-profiles__slide swiper-slide">
+									<div class="viewed-profiles__inner">
+										<a href="" class="viewed-profiles__link"></a>
+										<div class="viewed-profiles__top">
+											<div class="viewed-profiles__box text-xs">
+												<div class="viewed-profiles__text--wrap">
+													<div class="viewed-profiles__text">ID: 34506</div>
+													<div class="viewed-profiles__blur"></div>
+												</div>
+											</div>
+											<div class="viewed-profiles__actions">
+												<button type="submit" class="viewed-profiles__button _icon-favorite"></button>
+												<button type="submit" class="viewed-profiles__button _icon-png-gift"></button>
+												<button type="submit" class="viewed-profiles__button _icon-png-hearts"></button>
+											</div>
+										</div>
+										<div class="viewed-profiles__bottom">
+											<div class="viewed-profiles__content">
+												<div class="viewed-profiles__name">Karina, 32</div>
+												<div class="viewed-profiles__descr text-xs">New Jersey, USA</div>
+											</div>
+											<div class="viewed-profiles__bg"></div>
+										</div>
+									</div>
+									<div class="viewed-profiles__image">
+										<img src="img/gallery/02.webp" loading="lazy" />
+										<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+									</div>
+								</div>
+								<div class="viewed-profiles__slide swiper-slide">
+									<div class="viewed-profiles__inner">
+										<a href="" class="viewed-profiles__link"></a>
+										<div class="viewed-profiles__top">
+											<div class="viewed-profiles__box text-xs">
+												<div class="viewed-profiles__text--wrap">
+													<div class="viewed-profiles__text">ID: 34506</div>
+													<div class="viewed-profiles__blur"></div>
+												</div>
+												<div class="viewed-profiles__text--wrap">
+													<div class="viewed-profiles__text _icon-done-circle">Verified</div>
+													<div class="viewed-profiles__blur"></div>
+												</div>
+											</div>
+											<div class="viewed-profiles__actions">
+												<button type="submit" class="viewed-profiles__button _icon-favorite"></button>
+												<button type="submit" class="viewed-profiles__button _icon-png-gift"></button>
+												<button type="submit" class="viewed-profiles__button _icon-png-hearts"></button>
+											</div>
+										</div>
+										<div class="viewed-profiles__bottom">
+											<div class="viewed-profiles__content">
+												<div class="viewed-profiles__name">Karina, 32</div>
+												<div class="viewed-profiles__descr text-xs">New Jersey, USA</div>
+											</div>
+											<div class="viewed-profiles__bg"></div>
+										</div>
+									</div>
+									<div class="viewed-profiles__image">
+										<img src="img/gallery/03.webp" loading="lazy" />
+										<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+									</div>
+								</div>
+								<div class="viewed-profiles__slide swiper-slide">
+									<div class="viewed-profiles__inner">
+										<a href="" class="viewed-profiles__link"></a>
+										<div class="viewed-profiles__top">
+											<div class="viewed-profiles__box text-xs">
+												<div class="viewed-profiles__text--wrap">
+													<div class="viewed-profiles__text">ID: 34506</div>
+													<div class="viewed-profiles__blur"></div>
+												</div>
+											</div>
+											<div class="viewed-profiles__actions">
+												<button type="submit" class="viewed-profiles__button _icon-favorite"></button>
+												<button type="submit" class="viewed-profiles__button _icon-png-gift"></button>
+												<button type="submit" class="viewed-profiles__button _icon-png-hearts"></button>
+											</div>
+										</div>
+										<div class="viewed-profiles__bottom">
+											<div class="viewed-profiles__content">
+												<div class="viewed-profiles__name">Karina, 32</div>
+												<div class="viewed-profiles__descr text-xs">New Jersey, USA</div>
+											</div>
+											<div class="viewed-profiles__bg"></div>
+										</div>
+									</div>
+									<div class="viewed-profiles__image">
+										<img src="img/gallery/04.webp" loading="lazy" />
+										<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+									</div>
+								</div>
+								<div class="viewed-profiles__slide swiper-slide">
+									<div class="viewed-profiles__inner">
+										<a href="" class="viewed-profiles__link"></a>
+										<div class="viewed-profiles__top">
+											<div class="viewed-profiles__box text-xs">
+												<div class="viewed-profiles__text--wrap">
+													<div class="viewed-profiles__text">ID: 34506</div>
+													<div class="viewed-profiles__blur"></div>
+												</div>
+												<div class="viewed-profiles__text--wrap">
+													<div class="viewed-profiles__text _icon-done-circle">Verified</div>
+													<div class="viewed-profiles__blur"></div>
+												</div>
+											</div>
+											<div class="viewed-profiles__actions">
+												<button type="submit" class="viewed-profiles__button _icon-favorite"></button>
+												<button type="submit" class="viewed-profiles__button _icon-png-gift"></button>
+												<button type="submit" class="viewed-profiles__button _icon-png-hearts"></button>
+											</div>
+										</div>
+										<div class="viewed-profiles__bottom">
+											<div class="viewed-profiles__content">
+												<div class="viewed-profiles__name">Karina, 32</div>
+												<div class="viewed-profiles__descr text-xs">New Jersey, USA</div>
+											</div>
+											<div class="viewed-profiles__bg"></div>
+										</div>
+									</div>
+									<div class="viewed-profiles__image">
+										<img src="img/gallery/02.webp" loading="lazy" />
+										<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+									</div>
+								</div>
+								<div class="viewed-profiles__slide swiper-slide">
+									<div class="viewed-profiles__inner">
+										<a href="" class="viewed-profiles__link"></a>
+										<div class="viewed-profiles__top">
+											<div class="viewed-profiles__box text-xs">
+												<div class="viewed-profiles__text--wrap">
+													<div class="viewed-profiles__text">ID: 34506</div>
+													<div class="viewed-profiles__blur"></div>
+												</div>
+												<div class="viewed-profiles__text--wrap">
+													<div class="viewed-profiles__text _icon-done-circle">Verified</div>
+													<div class="viewed-profiles__blur"></div>
+												</div>
+											</div>
+											<div class="viewed-profiles__actions">
+												<button type="submit" class="viewed-profiles__button _icon-favorite"></button>
+												<button type="submit" class="viewed-profiles__button _icon-png-gift"></button>
+												<button type="submit" class="viewed-profiles__button _icon-png-hearts"></button>
+											</div>
+										</div>
+										<div class="viewed-profiles__bottom">
+											<div class="viewed-profiles__content">
+												<div class="viewed-profiles__name">Karina, 32</div>
+												<div class="viewed-profiles__descr text-xs">New Jersey, USA</div>
+											</div>
+											<div class="viewed-profiles__bg"></div>
+										</div>
+									</div>
+									<div class="viewed-profiles__image">
+										<img src="img/gallery/03.webp" loading="lazy" />
+										<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+									</div>
+								</div>
+								<div class="viewed-profiles__slide swiper-slide">
+									<div class="viewed-profiles__inner">
+										<a href="" class="viewed-profiles__link"></a>
+										<div class="viewed-profiles__top">
+											<div class="viewed-profiles__box text-xs">
+												<div class="viewed-profiles__text--wrap">
+													<div class="viewed-profiles__text">ID: 34506</div>
+													<div class="viewed-profiles__blur"></div>
+												</div>
+												<div class="viewed-profiles__text--wrap">
+													<div class="viewed-profiles__text _icon-done-circle">Verified</div>
+													<div class="viewed-profiles__blur"></div>
+												</div>
+											</div>
+											<div class="viewed-profiles__actions">
+												<button type="submit" class="viewed-profiles__button _icon-favorite"></button>
+												<button type="submit" class="viewed-profiles__button _icon-png-gift"></button>
+												<button type="submit" class="viewed-profiles__button _icon-png-hearts"></button>
+											</div>
+										</div>
+										<div class="viewed-profiles__bottom">
+											<div class="viewed-profiles__content">
+												<div class="viewed-profiles__name">Karina, 32</div>
+												<div class="viewed-profiles__descr text-xs">New Jersey, USA</div>
+											</div>
+											<div class="viewed-profiles__bg"></div>
+										</div>
+									</div>
+									<div class="viewed-profiles__image">
+										<img src="img/gallery/04.webp" loading="lazy" />
+										<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+									</div>
+								</div>
+							</div>
+							<div class="viewed-profiles__nav nav-swiper">
+								<button type="button" class="nav-swiper__button swiper-button-prev _icon-arrow"></button>
+								<button type="button" class="nav-swiper__button swiper-button-next _icon-arrow"></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+				<div class="footer__wrapper">
+					<a href="" class="footer__logo logo">Best Matchmaking</a>
+					<div class="footer__inner">
+						<nav class="footer__main">
+							<div data-spollers="767.98,max" class="footer__spollers">
+								<details class="footer__details">
+									<summary class="footer__title text-m _icon-arrow">Pages</summary>
+									<ul class="footer__list">
+										<li class="footer__item">
+											<a href="" class="footer__link">Home</a>
+										</li>
+										<li class="footer__item">
+											<a href="" class="footer__link">how it works</a>
+										</li>
+										<li class="footer__item">
+											<div data-spollers="0,min" class="footer__spollers-lv2">
+												<details class="footer__details">
+													<summary class="footer__title _icon-arrow">Ladies</summary>
+													<ul class="footer__list">
+														<li class="footer__item">
+															<a href="" class="footer__link">Link 1</a>
+														</li>
+														<li class="footer__item">
+															<a href="" class="footer__link">Link 2</a>
+														</li>
+														<li class="footer__item">
+															<a href="" class="footer__link">Link 3</a>
+														</li>
+														<li class="footer__item">
+															<a href="" class="footer__link">Link 4</a>
+														</li>
+													</ul>
+												</details>
+											</div>
+										</li>
+										<li class="footer__item">
+											<div data-spollers="0,min" class="footer__spollers-lv2">
+												<details class="footer__details">
+													<summary class="footer__title _icon-arrow">Women by age</summary>
+													<ul class="footer__list">
+														<li class="footer__item">
+															<a href="" class="footer__link">Link 1</a>
+														</li>
+														<li class="footer__item">
+															<a href="" class="footer__link">Link 2</a>
+														</li>
+														<li class="footer__item">
+															<a href="" class="footer__link">Link 3</a>
+														</li>
+														<li class="footer__item">
+															<a href="" class="footer__link">Link 4</a>
+														</li>
+													</ul>
+												</details>
+											</div>
+										</li>
+										<li class="footer__item">
+											<a href="" class="footer__link">reviews</a>
+										</li>
+									</ul>
+								</details>
+							</div>
+							<div data-spollers="767.98,max" class="footer__spollers">
+								<details class="footer__details">
+									<summary class="footer__title text-m _icon-arrow">Pages</summary>
+									<ul class="footer__list">
+										<li class="footer__item">
+											<a href="" class="footer__link">Membership Plans</a>
+										</li>
+										<li class="footer__item">
+											<a href="" class="footer__link">For Afiliates</a>
+										</li>
+										<li class="footer__item">
+											<a href="" class="footer__link">ladies search</a>
+										</li>
+										<li class="footer__item">
+											<a href="" class="footer__link">Gifts delivery</a>
+										</li>
+										<li class="footer__item">
+											<a href="" class="footer__link">Blogs</a>
+										</li>
+									</ul>
+								</details>
+							</div>
+						</nav>
+						<div class="footer__block">
+							<div class="footer__info--wrap">
+								<div class="footer__title text-m">Kontact</div>
+								<div class="footer__info info-footer">
+									<div class="info-footer__main _icon-location">30 N Gould St Ste R Sheridan, Wy 82801 <br>
+										United States</div>
+									<div class="info-footer__main _icon-phone">+1 (323) 6770 - 665</div>
+								</div>
+							</div>
+							<div class="footer__socials--wrap">
+								<div class="footer__title text-m">Social networks</div>
+								<div class="footer__socials socials-footer">
+									<a href="" class="socials-footer__link _icon-telegram"></a>
+									<a href="" class="socials-footer__link _icon-whatsapp"></a>
+									<a href="" class="socials-footer__link _icon-facebook"></a>
+									<a href="" class="socials-footer__link _icon-twitter"></a>
+									<a href="" class="socials-footer__link _icon-instagram"></a>
+									<a href="" class="socials-footer__link _icon-youtube"></a>
+									<a href="" class="socials-footer__link _icon-linkedin"></a>
+									<a href="" class="socials-footer__link _icon-product_hunt"></a>
+									<a href="" class="socials-footer__link _icon-trustpilot"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer__bottom">
+					<div class="footer__copyright text-s">Copyright © <span class="footer__year">2025</span> Match LLC</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script src="js/app.min.js?_v=20250512215203"></script>
+</body>
+
+</html>
