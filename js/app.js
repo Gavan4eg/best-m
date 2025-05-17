@@ -541,6 +541,9 @@
                 if (window.FLS) console.log(message);
             }), 0);
         }
+        function getDigFormat(item, sepp = " ") {
+            return item.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, `$1${sepp}`);
+        }
         function uniqArray(array) {
             return array.filter((function(item, index, self) {
                 return self.indexOf(item) === index;
@@ -584,6 +587,179 @@
                 }
             }
         }
+        const marquee = () => {
+            const $marqueeArray = document.querySelectorAll("[data-marquee]");
+            const CLASS_NAMES = {
+                wrapper: "marquee-wrapper",
+                inner: "marquee-inner",
+                item: "marquee-item"
+            };
+            if (!$marqueeArray.length) return;
+            const {head} = document;
+            function debounce(delay, fn) {
+                let timerId;
+                return (...args) => {
+                    if (timerId) clearTimeout(timerId);
+                    timerId = setTimeout((() => {
+                        fn(...args);
+                        timerId = null;
+                    }), delay);
+                };
+            }
+            const onWindowWidthResize = cb => {
+                if (!cb && !isFunction(cb)) return;
+                let prevWidth = 0;
+                const handleResize = () => {
+                    const currentWidth = window.innerWidth;
+                    if (prevWidth !== currentWidth) {
+                        prevWidth = currentWidth;
+                        cb();
+                    }
+                };
+                window.addEventListener("resize", debounce(50, handleResize));
+                handleResize();
+            };
+            const buildMarquee = marqueeNode => {
+                if (!marqueeNode) return;
+                const $marquee = marqueeNode;
+                const $childElements = $marquee.children;
+                if (!$childElements.length) return;
+                $marquee.classList.add(CLASS_NAMES.wrapper);
+                Array.from($childElements).forEach(($childItem => $childItem.classList.add(CLASS_NAMES.item)));
+                const htmlStructure = `<div class="${CLASS_NAMES.inner}">${$marquee.innerHTML}</div>`;
+                $marquee.innerHTML = htmlStructure;
+            };
+            const getElSize = ($el, isVertical) => {
+                if (isVertical) return $el.offsetHeight;
+                return $el.offsetWidth;
+            };
+            $marqueeArray.forEach(($wrapper => {
+                if (!$wrapper) return;
+                buildMarquee($wrapper);
+                const $marqueeInner = $wrapper.firstElementChild;
+                let cacheArray = [];
+                if (!$marqueeInner) return;
+                const dataMarqueeSpace = parseFloat($wrapper.getAttribute("data-marquee-space"));
+                const $items = $wrapper.querySelectorAll(`.${CLASS_NAMES.item}`);
+                const speed = parseFloat($wrapper.getAttribute("data-marquee-speed")) / 10 || 100;
+                const isMousePaused = $wrapper.hasAttribute("data-marquee-pause-mouse-enter");
+                const direction = $wrapper.getAttribute("data-marquee-direction");
+                const isVertical = direction === "bottom" || direction === "top";
+                const animName = `marqueeAnimation-${Math.floor(Math.random() * 1e7)}`;
+                let spaceBetweenItem = parseFloat(window.getComputedStyle($items[0])?.getPropertyValue("margin-right"));
+                let spaceBetween = spaceBetweenItem ? spaceBetweenItem : !isNaN(dataMarqueeSpace) ? dataMarqueeSpace : 30;
+                let startPosition = parseFloat($wrapper.getAttribute("data-marquee-start")) || 0;
+                let sumSize = 0;
+                let firstScreenVisibleSize = 0;
+                let initialSizeElements = 0;
+                let initialElementsLength = $marqueeInner.children.length;
+                let index = 0;
+                let counterDuplicateElements = 0;
+                const initEvents = () => {
+                    if (startPosition) $marqueeInner.addEventListener("animationiteration", onChangeStartPosition);
+                    if (!isMousePaused) return;
+                    $marqueeInner.removeEventListener("mouseenter", onChangePaused);
+                    $marqueeInner.removeEventListener("mouseleave", onChangePaused);
+                    $marqueeInner.addEventListener("mouseenter", onChangePaused);
+                    $marqueeInner.addEventListener("mouseleave", onChangePaused);
+                };
+                const onChangeStartPosition = () => {
+                    startPosition = 0;
+                    $marqueeInner.removeEventListener("animationiteration", onChangeStartPosition);
+                    onResize();
+                };
+                const setBaseStyles = firstScreenVisibleSize => {
+                    let baseStyle = "display: flex; flex-wrap: nowrap;";
+                    if (isVertical) {
+                        baseStyle += `\n\t\t\t\tflex-direction: column;\n\t\t\t position: relative;\n\t\t\t will-change: transform;`;
+                        if (direction === "bottom") baseStyle += `top: -${firstScreenVisibleSize}px;`;
+                    } else {
+                        baseStyle += `\n\t\t\t\tposition: relative;\n\t\t\t will-change: transform;`;
+                        if (direction === "right") baseStyle += `left: -${firstScreenVisibleSize}px;;`;
+                    }
+                    $marqueeInner.style.cssText = baseStyle;
+                };
+                const setdirectionAnim = totalWidth => {
+                    switch (direction) {
+                      case "right":
+                      case "bottom":
+                        return totalWidth;
+
+                      default:
+                        return -totalWidth;
+                    }
+                };
+                const animation = () => {
+                    const keyFrameCss = `@keyframes ${animName} {\n\t\t\t\t\t 0% {\n\t\t\t\t\t\t transform: translate${isVertical ? "Y" : "X"}(${startPosition}%);\n\t\t\t\t\t }\n\t\t\t\t\t 100% {\n\t\t\t\t\t\t transform: translate${isVertical ? "Y" : "X"}(${setdirectionAnim(firstScreenVisibleSize)}px);\n\t\t\t\t\t }\n\t\t\t\t }`;
+                    const $style = document.createElement("style");
+                    $style.classList.add(animName);
+                    $style.innerHTML = keyFrameCss;
+                    head.append($style);
+                    $marqueeInner.style.animation = `${animName} ${(firstScreenVisibleSize + startPosition * firstScreenVisibleSize / 100) / speed}s infinite linear`;
+                };
+                const addDublicateElements = () => {
+                    sumSize = firstScreenVisibleSize = initialSizeElements = counterDuplicateElements = index = 0;
+                    const $parentNodeWidth = getElSize($wrapper, isVertical);
+                    let $childrenEl = Array.from($marqueeInner.children);
+                    if (!$childrenEl.length) return;
+                    if (!cacheArray.length) cacheArray = $childrenEl.map(($item => $item)); else $childrenEl = [ ...cacheArray ];
+                    $marqueeInner.style.display = "flex";
+                    if (isVertical) $marqueeInner.style.flexDirection = "column";
+                    $marqueeInner.innerHTML = "";
+                    $childrenEl.forEach(($item => {
+                        $marqueeInner.append($item);
+                    }));
+                    $childrenEl.forEach(($item => {
+                        if (isVertical) $item.style.marginBottom = `${spaceBetween}px`; else {
+                            $item.style.marginRight = `${spaceBetween}px`;
+                            $item.style.flexShrink = 0;
+                        }
+                        const sizeEl = getElSize($item, isVertical);
+                        sumSize += sizeEl + spaceBetween;
+                        firstScreenVisibleSize += sizeEl + spaceBetween;
+                        initialSizeElements += sizeEl + spaceBetween;
+                        counterDuplicateElements += 1;
+                        return sizeEl;
+                    }));
+                    const $multiplyWidth = $parentNodeWidth * 2 + initialSizeElements;
+                    for (;sumSize < $multiplyWidth; index += 1) {
+                        if (!$childrenEl[index]) index = 0;
+                        const $cloneNone = $childrenEl[index].cloneNode(true);
+                        const $lastElement = $marqueeInner.children[index];
+                        $marqueeInner.append($cloneNone);
+                        sumSize += getElSize($lastElement, isVertical) + spaceBetween;
+                        if (firstScreenVisibleSize < $parentNodeWidth || counterDuplicateElements % initialElementsLength !== 0) {
+                            counterDuplicateElements += 1;
+                            firstScreenVisibleSize += getElSize($lastElement, isVertical) + spaceBetween;
+                        }
+                    }
+                    setBaseStyles(firstScreenVisibleSize);
+                };
+                const correctSpaceBetween = () => {
+                    if (spaceBetweenItem) {
+                        $items.forEach(($item => $item.style.removeProperty("margin-right")));
+                        spaceBetweenItem = parseFloat(window.getComputedStyle($items[0]).getPropertyValue("margin-right"));
+                        spaceBetween = spaceBetweenItem ? spaceBetweenItem : !isNaN(dataMarqueeSpace) ? dataMarqueeSpace : 30;
+                    }
+                };
+                const init = () => {
+                    correctSpaceBetween();
+                    addDublicateElements();
+                    animation();
+                    initEvents();
+                };
+                const onResize = () => {
+                    head.querySelector(`.${animName}`)?.remove();
+                    init();
+                };
+                const onChangePaused = e => {
+                    const {type, target} = e;
+                    target.style.animationPlayState = type === "mouseenter" ? "paused" : "running";
+                };
+                onWindowWidthResize(onResize);
+            }));
+        };
+        marquee();
         class Popup {
             constructor(options) {
                 let config = {
@@ -5926,6 +6102,60 @@
                 },
                 on: {}
             });
+            const locationSlider = document.querySelector(".location__slider");
+            let locationSwiper = null;
+            function toggleLocationSlider() {
+                const screenWidth = window.innerWidth;
+                if (screenWidth <= 991.98) {
+                    if (!locationSwiper) locationSwiper = new swiper_core_Swiper(locationSlider, {
+                        modules: [ Navigation, freeMode, Mousewheel ],
+                        observer: true,
+                        observeParents: true,
+                        speed: 800,
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                        preloadImages: false,
+                        lazy: {
+                            loadPrevNext: true
+                        },
+                        freeMode: {
+                            enabled: true,
+                            sticky: false,
+                            momentumBounce: false
+                        },
+                        mousewheel: {
+                            enabled: true,
+                            sensitivity: .2,
+                            forceToAxis: true
+                        },
+                        navigation: {
+                            prevEl: ".swiper-button-prev",
+                            nextEl: ".swiper-button-next"
+                        },
+                        breakpoints: {
+                            0: {
+                                slidesPerView: 1,
+                                freeMode: {
+                                    enabled: false,
+                                    sticky: true,
+                                    momentumBounce: false
+                                }
+                            },
+                            768: {
+                                slidesPerView: 2
+                            },
+                            992: {
+                                slidesPerView: 3
+                            }
+                        }
+                    });
+                } else if (locationSwiper) {
+                    locationSwiper.destroy(true, true);
+                    locationSwiper = null;
+                }
+            }
+            window.addEventListener("load", toggleLocationSlider);
+            window.addEventListener("resize", toggleLocationSlider);
         }
         window.addEventListener("DOMContentLoaded", (function(e) {
             initSliders();
@@ -6067,6 +6297,39 @@
                 scrollDirection = Math.max(scrollTop, 0);
             }
             document.addEventListener("windowScroll", handleScroll);
+        }
+        function digitsCounter() {
+            function digitsCountersInit(digitsCountersItems) {
+                let digitsCounters = digitsCountersItems ? digitsCountersItems : document.querySelectorAll("[data-digits-counter]");
+                if (digitsCounters.length) digitsCounters.forEach((digitsCounter => {
+                    if (digitsCounter.hasAttribute("data-go")) return;
+                    digitsCounter.setAttribute("data-go", "");
+                    digitsCounter.dataset.digitsCounter = digitsCounter.innerHTML;
+                    digitsCounter.innerHTML = `0`;
+                    digitsCountersAnimate(digitsCounter);
+                }));
+            }
+            function digitsCountersAnimate(digitsCounter) {
+                let startTimestamp = null;
+                const duration = parseFloat(digitsCounter.dataset.digitsCounterSpeed) ? parseFloat(digitsCounter.dataset.digitsCounterSpeed) : 1e3;
+                const startValue = parseFloat(digitsCounter.dataset.digitsCounter);
+                const format = digitsCounter.dataset.digitsCounterFormat ? digitsCounter.dataset.digitsCounterFormat : " ";
+                const startPosition = 0;
+                const step = timestamp => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const value = Math.floor(progress * (startPosition + startValue));
+                    digitsCounter.innerHTML = typeof digitsCounter.dataset.digitsCounterFormat !== "undefined" ? getDigFormat(value, format) : value;
+                    if (progress < 1) window.requestAnimationFrame(step); else digitsCounter.removeAttribute("data-go");
+                };
+                window.requestAnimationFrame(step);
+            }
+            function digitsCounterAction(e) {
+                const entry = e.detail.entry;
+                const targetElement = entry.target;
+                if (targetElement.querySelectorAll("[data-digits-counter]").length) digitsCountersInit(targetElement.querySelectorAll("[data-digits-counter]"));
+            }
+            document.addEventListener("watcherCallback", digitsCounterAction);
         }
         setTimeout((() => {
             if (addWindowScrollEvent) {
@@ -6258,5 +6521,6 @@
         });
         formSubmit();
         headerScroll();
+        digitsCounter();
     })();
 })();
